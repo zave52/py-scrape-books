@@ -1,3 +1,5 @@
+from typing import Generator
+
 import scrapy
 from scrapy.http import Response
 
@@ -59,7 +61,9 @@ class BooksSpider(scrapy.Spider):
 
         return book
 
-    def parse(self, response: Response, **kwargs):
+    def parse(
+        self, response: Response, **kwargs
+    ) -> Generator[scrapy.http.Request]:
         self.logger.info(f"Parsing page: {response.url}")
 
         for book in response.css("article.product_pod"):
