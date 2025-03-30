@@ -54,5 +54,12 @@ class BooksSpider(scrapy.Spider):
 
         return book
 
-    def parse(self, response):
-        pass
+    def parse(self, response: Response, **kwargs):
+        for book in response.css("article.product_pod"):
+            book_url = book.css("h3 > a::attr(href)").get()
+            yield response.follow(book_url, callback=self._parse_single_book)
+
+        next_page = response.css(".pager li.next a::attr(href)").get()
+        if next_page is not None:
+            yield response.follow(next_page, callback=self.parse)
+
