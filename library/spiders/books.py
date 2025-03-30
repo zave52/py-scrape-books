@@ -3,13 +3,13 @@ from scrapy.http import Response
 
 
 class BookItem(scrapy.Item):
-    title: scrapy.Field()
-    price: scrapy.Field()
-    amount_in_stock: scrapy.Field()
-    rating: scrapy.Field()
-    category: scrapy.Field()
-    description: scrapy.Field()
-    upc: scrapy.Field()
+    title = scrapy.Field()
+    price = scrapy.Field()
+    amount_in_stock = scrapy.Field()
+    rating = scrapy.Field()
+    category = scrapy.Field()
+    description = scrapy.Field()
+    upc = scrapy.Field()
 
 
 class BooksSpider(scrapy.Spider):
