@@ -3,16 +3,7 @@ from typing import Generator
 import scrapy
 from scrapy.http import Response
 
-
-class BookItem(scrapy.Item):
-    title = scrapy.Field()
-    price = scrapy.Field()
-    amount_in_stock = scrapy.Field()
-    rating = scrapy.Field()
-    category = scrapy.Field()
-    description = scrapy.Field()
-    upc = scrapy.Field()
-
+from library.items import BookItem
 
 class BooksSpider(scrapy.Spider):
     name = "books"
